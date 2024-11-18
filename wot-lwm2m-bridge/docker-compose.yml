@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  leshan-server:
+    build:
+      context: .
+      dockerfile: Dockerfile.java
+    container_name: leshan-demo-server
+    ports:
+      - "5683:5683/udp"  # Expose CoAP port for LwM2M
+      - "8080:8080"      # Expose HTTP port for Leshan server
+    networks:
+      - lwm2m_wot_network
+
+  wot-thing:
+    build:
+      context: .
+      dockerfile: Dockerfile.thing
+    container_name: wot-thing
+    ports:
+      - "8081:8081"      # Expose HTTP port for WoT Thing
+    networks:
+      - lwm2m_wot_network
+
+  bridge:
+    build:
+      context: .
+      dockerfile: Dockerfile.bridge
+    container_name: wot-to-lwm2m-bridge
+    depends_on:
+      - leshan-server
+      - wot-thing
+    ports:
+      - "8082:8082"      # Expose HTTP port for WoT-to-LwM2M bridge
+    networks:
+      - lwm2m_wot_network
+
+networks:
+  lwm2m_wot_network:
+    driver: bridge

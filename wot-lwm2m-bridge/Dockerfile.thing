@@ -1,0 +1,18 @@
+# Dockerfile.thing
+FROM node:20
+
+# Set up the working directory
+WORKDIR /usr/src/app
+
+# Copy and install dependencies
+COPY package*.json ./
+RUN npm install
+
+# Copy the WoT Thing script
+COPY thing.js .
+
+# Expose port for WoT Thing
+EXPOSE 8081
+
+# Start the WoT Thing
+CMD ["node", "thing.js"]

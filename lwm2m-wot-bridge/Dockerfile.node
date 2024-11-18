@@ -1,0 +1,18 @@
+# Dockerfile.node
+FROM node:20
+
+# Set up the working directory
+WORKDIR /usr/src/app
+
+# Copy package.json and install dependencies
+COPY package*.json ./
+RUN npm install
+
+# Copy bridge script
+COPY bridge.js .
+
+# Expose port for WoT bridge
+EXPOSE 8081
+
+# Start the WoT bridge
+CMD ["node", "bridge.js"]

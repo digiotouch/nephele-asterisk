@@ -1,0 +1,12 @@
+services:
+  server:
+    build: ./server
+    ports:
+      - "4000:4000"
+    volumes:
+      - ./server/storage:/app/storage  # Maps local 'server/storage' folder to container '/app/storage'
+
+  client:
+    build: ./client
+    depends_on:
+      - server

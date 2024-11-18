@@ -1,0 +1,6 @@
+# Node artifact files
+dist
+node_modules/
+
+# environments
+.env

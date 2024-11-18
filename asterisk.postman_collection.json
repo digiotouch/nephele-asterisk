@@ -1,0 +1,67 @@
+{
+	"info": {
+		"_postman_id": "48dc7b05-a472-4426-9c91-8bd7b6004fa0",
+		"name": "asterisk",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "36143075"
+	},
+	"item": [
+		{
+			"name": "wot2lwm2m",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"@context\": \"https://www.w3.org/2022/wot/td/v1.1\",\n    \"id\": \"urn:uuid:0804d572-cce8-422a-bb7c-4412fcd56f06\",\n    \"title\": \"MyLampThing\",\n    \"securityDefinitions\": {\n        \"basic_sc\": {\"scheme\": \"basic\", \"in\": \"header\"}\n    },\n    \"security\": \"basic_sc\",\n    \"properties\": {\n        \"status\": {\n            \"type\": \"string\",\n            \"forms\": [{\"href\": \"https://mylamp.example.com/status\"}]\n        }\n    },\n    \"actions\": {\n        \"toggle\": {\n            \"forms\": [{\"href\": \"https://mylamp.example.com/toggle\"}]\n        }\n    },\n    \"events\": {\n        \"overheating\": {\n            \"data\": {\"type\": \"string\"},\n            \"forms\": [{\n                \"href\": \"https://mylamp.example.com/oh\",\n                \"subprotocol\": \"longpoll\"\n            }]\n        }\n    }\n}\n\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/convert",
+					"protocol": "http",
+					"port": "3000",
+					"path": [
+						"convert"
+					]
+				},
+				"description": "wot2lwm2m"
+			},
+			"response": []
+		},
+		{
+			"name": "lwm2m2wot",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "<LWM2M  xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:noNamespaceSchemaLocation=\"http://openmobilealliance.org/tech/profiles/LWM2M.xsd\">\n\t<Object ObjectType=\"MODefinition\">\n\t\t<Name>Temperature</Name>\n\t\t<Description1>This IPSO object should be used with a temperature sensor to report a temperature measurement.  It also provides resources for minimum/maximum measured values and the minimum/maximum range that can be measured by the temperature sensor. An example measurement unit is degrees Celsius.</Description1>\n\t\t<ObjectID>3303</ObjectID>\n\t\t<ObjectURN>urn:oma:lwm2m:ext:3303:1.1</ObjectURN>\n\t\t<LWM2MVersion>1.0</LWM2MVersion>\n\t\t<ObjectVersion>1.1</ObjectVersion>\n\t\t<MultipleInstances>Multiple</MultipleInstances>\n\t\t<Mandatory>Optional</Mandatory>\n\t\t<Resources>\n\t\t\t<Item ID=\"5700\">\n\t\t\t\t<Name>Sensor Value</Name>\n\t\t\t\t<Operations>R</Operations>\n\t\t\t\t<MultipleInstances>Single</MultipleInstances>\n\t\t\t\t<Mandatory>Mandatory</Mandatory>\n\t\t\t\t<Type>Float</Type>\n\t\t\t\t<RangeEnumeration></RangeEnumeration>\n\t\t\t\t<Units></Units>\n\t\t\t\t<Description>Last or Current Measured Value from the Sensor.</Description>\n\t\t\t</Item>\n\t\t\t<Item ID=\"5601\">\n\t\t\t\t<Name>Min Measured Value</Name>\n\t\t\t\t<Operations>R</Operations>\n\t\t\t\t<MultipleInstances>Single</MultipleInstances>\n\t\t\t\t<Mandatory>Optional</Mandatory>\n\t\t\t\t<Type>Float</Type>\n\t\t\t\t<RangeEnumeration></RangeEnumeration>\n\t\t\t\t<Units></Units>\n\t\t\t\t<Description>The minimum value measured by the sensor since power ON or reset.</Description>\n\t\t\t</Item>\n\t\t\t<Item ID=\"5602\">\n\t\t\t\t<Name>Max Measured Value</Name>\n\t\t\t\t<Operations>R</Operations>\n\t\t\t\t<MultipleInstances>Single</MultipleInstances>\n\t\t\t\t<Mandatory>Optional</Mandatory>\n\t\t\t\t<Type>Float</Type>\n\t\t\t\t<RangeEnumeration></RangeEnumeration>\n\t\t\t\t<Units></Units>\n\t\t\t\t<Description>The maximum value measured by the sensor since power ON or reset.</Description>\n\t\t\t</Item>\n\t\t\t<Item ID=\"5603\">\n\t\t\t\t<Name>Min Range Value</Name>\n\t\t\t\t<Operations>R</Operations>\n\t\t\t\t<MultipleInstances>Single</MultipleInstances>\n\t\t\t\t<Mandatory>Optional</Mandatory>\n\t\t\t\t<Type>Float</Type>\n\t\t\t\t<RangeEnumeration></RangeEnumeration>\n\t\t\t\t<Units></Units>\n\t\t\t\t<Description>The minimum value that can be measured by the sensor.</Description>\n\t\t\t</Item>\n\t\t\t<Item ID=\"5604\">\n\t\t\t\t<Name>Max Range Value</Name>\n\t\t\t\t<Operations>R</Operations>\n\t\t\t\t<MultipleInstances>Single</MultipleInstances>\n\t\t\t\t<Mandatory>Optional</Mandatory>\n\t\t\t\t<Type>Float</Type>\n\t\t\t\t<RangeEnumeration></RangeEnumeration>\n\t\t\t\t<Units></Units>\n\t\t\t\t<Description>The maximum value that can be measured by the sensor.</Description>\n\t\t\t</Item>\n\t\t\t<Item ID=\"5701\">\n\t\t\t\t<Name>Sensor Units</Name>\n\t\t\t\t<Operations>R</Operations>\n\t\t\t\t<MultipleInstances>Single</MultipleInstances>\n\t\t\t\t<Mandatory>Optional</Mandatory>\n\t\t\t\t<Type>String</Type>\n\t\t\t\t<RangeEnumeration></RangeEnumeration>\n\t\t\t\t<Units></Units>\n\t\t\t\t<Description>Measurement Units Definition.</Description>\n\t\t\t</Item>\n\t\t\t<Item ID=\"5605\">\n\t\t\t\t<Name>Reset Min and Max Measured Values</Name>\n\t\t\t\t<Operations>E</Operations>\n\t\t\t\t<MultipleInstances>Single</MultipleInstances>\n\t\t\t\t<Mandatory>Optional</Mandatory>\n\t\t\t\t<Type></Type>\n\t\t\t\t<RangeEnumeration></RangeEnumeration>\n\t\t\t\t<Units></Units>\n\t\t\t\t<Description>Reset the Min and Max Measured Values to Current Value.</Description>\n\t\t\t</Item>\n\t\t\t<Item ID=\"5750\">\n\t\t\t\t<Name>Application Type</Name>\n\t\t\t\t<Operations>RW</Operations>\n\t\t\t\t<MultipleInstances>Single</MultipleInstances>\n\t\t\t\t<Mandatory>Optional</Mandatory>\n\t\t\t\t<Type>String</Type>\n\t\t\t\t<RangeEnumeration></RangeEnumeration>\n\t\t\t\t<Units></Units>\n\t\t\t\t<Description>The application type of the sensor or actuator as a string depending on the use case.</Description>\n\t\t\t</Item>\n\t\t\t<Item ID=\"5518\">\n\t\t\t\t<Name>Timestamp</Name>\n\t\t\t\t<Operations>R</Operations>\n\t\t\t\t<MultipleInstances>Single</MultipleInstances>\n\t\t\t\t<Mandatory>Optional</Mandatory>\n\t\t\t\t<Type>Time</Type>\n\t\t\t\t<RangeEnumeration></RangeEnumeration>\n\t\t\t\t<Units></Units>\n\t\t\t\t<Description>The timestamp of when the measurement was performed.</Description>\n\t\t\t</Item>\n\t\t\t<Item ID=\"6050\">\n\t\t\t\t<Name>Fractional Timestamp</Name>\n\t\t\t\t<Operations>R</Operations>\n\t\t\t\t<MultipleInstances>Single</MultipleInstances>\n\t\t\t\t<Mandatory>Optional</Mandatory>\n\t\t\t\t<Type>Float</Type>\n\t\t\t\t<RangeEnumeration>0..1</RangeEnumeration>\n\t\t\t\t<Units>s</Units>\n\t\t\t\t<Description>Fractional part of the timestamp when sub-second precision is used (e.g., 0.23 for 230 ms).</Description>\n\t\t\t</Item>\n\t\t\t<Item ID=\"6042\">\n\t\t\t\t<Name>Measurement Quality Indicator</Name>\n\t\t\t\t<Operations>R</Operations>\n\t\t\t\t<MultipleInstances>Single</MultipleInstances>\n\t\t\t\t<Mandatory>Optional</Mandatory>\n\t\t\t\t<Type>Integer</Type>\n\t\t\t\t<RangeEnumeration>0..23</RangeEnumeration>\n\t\t\t\t<Units></Units>\n\t\t\t\t<Description>Measurement quality indicator reported by a smart sensor. 0: UNCHECKED No quality checks were done because they do not exist or can not be applied. 1: REJECTED WITH CERTAINTY The measured value is invalid. 2: REJECTED WITH PROBABILITY The measured value is likely invalid. 3: ACCEPTED BUT SUSPICIOUS The measured value is likely OK. 4: ACCEPTED The measured value is OK. 5-15: Reserved for future extensions. 16-23: Vendor specific measurement quality.</Description>\n\t\t\t</Item>\n\t\t\t<Item ID=\"6049\">\n\t\t\t\t<Name>Measurement Quality Level</Name>\n\t\t\t\t<Operations>R</Operations>\n\t\t\t\t<MultipleInstances>Single</MultipleInstances>\n\t\t\t\t<Mandatory>Optional</Mandatory>\n\t\t\t\t<Type>Integer</Type>\n\t\t\t\t<RangeEnumeration>0..100</RangeEnumeration>\n\t\t\t\t<Units></Units>\n\t\t\t\t<Description>Measurement quality level reported by a smart sensor. Quality level 100 means that the measurement has fully passed quality check algorithms. Smaller quality levels mean that quality has decreased and the measurement has only partially passed quality check algorithms. The smaller the quality level, the more caution should be used by the application when using the measurement. When the quality level is 0 it means that the measurement should certainly be rejected.</Description>\n\t\t\t</Item>\n\t\t</Resources>\n\t\t<Description2></Description2>\n\t</Object>\n</LWM2M>",
+					"options": {
+						"raw": {
+							"language": "xml"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3001/convert",
+					"protocol": "http",
+					"port": "3001",
+					"path": [
+						"convert"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

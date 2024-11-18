@@ -1,0 +1,11 @@
+services:
+  server:
+    build: ./server
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./server/uploads:/app/uploads
+  client:
+    build: ./client
+    depends_on:
+      - server

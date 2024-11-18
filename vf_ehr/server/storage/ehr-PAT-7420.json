@@ -1,0 +1,57 @@
+{
+  "patient": {
+    "id": "PAT-7420",
+    "firstName": "Jane",
+    "lastName": "Smith",
+    "dateOfBirth": "1990-03-12",
+    "gender": "Female",
+    "contact": {
+      "phone": "+342398732642",
+      "email": "john.doe@example.com",
+      "address": "1 Barcelona street, 98302 Barcelona"
+    }
+  },
+  "medicalHistory": [
+    {
+      "condition": "Fever",
+      "diagnosisDate": "2010-09-15",
+      "notes": "Prescribed Doliprane 1000mg, 2 times a day"
+    }
+  ],
+  "medications": [
+    {
+      "name": "Metformin",
+      "dosage": "500 mg",
+      "frequency": "Twice daily"
+    }
+  ],
+  "allergies": [
+    {
+      "substance": "Penicillin",
+      "reaction": "Rash",
+      "severity": "Moderate"
+    }
+  ],
+  "vitals": {
+    "height": "175 cm",
+    "weight": "78 kg",
+    "bloodPressure": "120/80 mmHg",
+    "heartRate": "72 bpm"
+  },
+  "appointments": [
+    {
+      "date": "2024-11-20",
+      "time": "10:30 AM",
+      "doctor": "Dr. Smith",
+      "purpose": "Follow-up for diabetes"
+    }
+  ],
+  "labResults": [
+    {
+      "test": "HbA1c",
+      "result": "6.8%",
+      "normalRange": "4.0-5.6%",
+      "date": "2024-10-15"
+    }
+  ]
+}

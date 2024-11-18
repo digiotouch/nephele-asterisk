@@ -1,0 +1,17 @@
+{
+    "name": "lwm2m-to-wot-converter",
+    "version": "1.0.0",
+    "description": "Converts LwM2M specifications to W3C WoT Thing Descriptions",
+    "main": "reverse_converter.js",
+    "scripts": {
+      "start": "node reverse_converter.js"
+    },
+    "dependencies": {
+      "express": "^4.17.1",
+      "body-parser": "^1.19.0",
+      "xml2js": "^0.6.2"
+    },
+    "author": "Soumya Kanti Datta, Digiotouch SARL",
+    "license": "Apache License, Version 2.0"
+  }
+  
